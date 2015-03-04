@@ -5,6 +5,8 @@ library(shinyIncubator)
 #devtools::install_github('rstudio/shinyapps')
 #deployApp()
 
+source("engine/mv_main.R")
+
 shinyServer(function(input, output, session){
   
   source("external/sidebar/io.sidebar.wp1.R",local=T)

@@ -45,21 +45,16 @@ output$user_report <- renderUI({
 
 #current list of stocks
 output$stock_list <- renderText({ 
-  input$add_ticker
-  #counter
   
-  if(input$add_ticker==0)
-    i<<-0
+  count<-0
+  temp_list<-""
   
-  if(input$add_ticker==0)
+  if(input$clear_portfolio==count+1){
     temp_list<<-""
-  
-  if(input$clear_portfolio==i+1){
-    temp_list<<-""
-    i<<-i+1
+    count<-count+1
   }
   else
-    temp_list<<-paste(temp_list,isolate(input$ticker))
+    temp_list<-paste(temp_list,isolate(input$ticker))
   
   paste("Your current list of stocks: ",temp_list)#,input$ticker,input$start_backtest,input$start_date,input$end_date,input$max_risk)
   
