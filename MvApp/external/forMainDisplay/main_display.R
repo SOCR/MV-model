@@ -9,7 +9,7 @@ output$main_plot <- renderPlot({
                         if(input$run_model!=0){
                           isolate({
                             withProgress(session, {
-                              setProgress(message = "Resetting all weights, please wait",
+                              setProgress(message = "Downloading Data, please wait",
                                           detail = "This may take a few moments...")
                               isolate({get_mv_graph(input$ticker,input$start_date,input$end_date)
                               })

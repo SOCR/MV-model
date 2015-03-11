@@ -6,14 +6,6 @@ output$ticker <- renderUI({
   div(class="span8",textInput("ticker", label = h4("Ticker Symbol"), value = "AAPL HSY"))
 })
 
-output$add_ticker<- renderUI({
-  div(class="span8",actionButton("add_ticker", label = "Add Ticker",width=25))
-})
-
-output$clear_portfolio<- renderUI({
-  div(class="span8",actionButton("clear_portfolio", label = "Clear Portfolio",width=25))
-})
-
 output$start_date <- renderUI({
   div(class="span8", textInput(inputId="start_date", label = "Start Date:", value = "2010-01-01"), selected="2010-01-01", width="100%")
 })
@@ -30,7 +22,7 @@ output$total_money <- renderUI({
   div(class="span8", textInput(inputId="Total Money", label = "Total Money to Invest", value ="1,000,000"))
 })
 
-#action button
+#run model
 output$run_model<- renderUI({
   div(class="span8",actionButton("run_model", label = "Run the Model",width=18))
 })
@@ -41,23 +33,6 @@ output$user_report <- renderUI({
     if(input$run_model!=0)
       downloadButton(outputId="user_report", label = "Download Full Report", class = NULL)
   }
-})
-
-#current list of stocks
-output$stock_list <- renderText({ 
-  
-  count<-0
-  temp_list<-""
-  
-  if(input$clear_portfolio==count+1){
-    temp_list<<-""
-    count<-count+1
-  }
-  else
-    temp_list<-paste(temp_list,isolate(input$ticker))
-  
-  paste("Your current list of stocks: ",temp_list)#,input$ticker,input$start_backtest,input$start_date,input$end_date,input$max_risk)
-  
 })
 
 
